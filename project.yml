@@ -1,0 +1,22 @@
+name: ImageMint
+options:
+  bundleIdPrefix: com.yourcompany
+  minimumDeploymentTarget:
+    macOS: '14.0'
+settings:
+  base:
+    PRODUCT_NAME: ImageMint
+targets:
+  ImageMint:
+    type: application
+    platform: macOS
+    sources:
+      - path: .
+        excludes:
+          - Assets.xcassets
+          - Info.plist
+    resources:
+      - Assets.xcassets
+      - Info.plist
+    settings:
+      INFOPLIST_FILE: Info.plist

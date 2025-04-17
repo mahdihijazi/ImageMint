@@ -1,0 +1,321 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 63;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		15547210D4C1E02166697843 /* project.yml in Resources */ = {isa = PBXBuildFile; fileRef = 501A7B22BBAFEFB043BB96D4 /* project.yml */; };
+		43B3574AFA564EF093C7FEF1 /* ProgressTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A7DAF876F6847C0F510835 /* ProgressTracker.swift */; };
+		4F834211E19CCCE20E6BC6B5 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F980BC5F68937DDCF16D8F /* Helpers.swift */; };
+		516AFAF227FD56BB97D14178 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB65997F339638C5D25154A /* DeviceManager.swift */; };
+		6066A382795A1D675DD8460F /* RestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AE287D50CF79C5CB1FF299 /* RestoreManager.swift */; };
+		C36A9C6C687DBDAE9E2B8404 /* ImageMintApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDC649C464BCDF0FBBA23C1 /* ImageMintApp.swift */; };
+		CD5803BF8F8E8B4645140A56 /* BackupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4377D2831971571EA98CCB /* BackupManager.swift */; };
+		F5614ED8795AE94CF8577BCB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA099ACA9E6A8FC2466F6BE8 /* ContentView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0CDC649C464BCDF0FBBA23C1 /* ImageMintApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMintApp.swift; sourceTree = "<group>"; };
+		25F980BC5F68937DDCF16D8F /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		4FB65997F339638C5D25154A /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
+		501A7B22BBAFEFB043BB96D4 /* project.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = project.yml; sourceTree = "<group>"; };
+		7748CD0460DE0B13675FA0B6 /* ImageMint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageMint.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		89AE287D50CF79C5CB1FF299 /* RestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreManager.swift; sourceTree = "<group>"; };
+		8E4377D2831971571EA98CCB /* BackupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupManager.swift; sourceTree = "<group>"; };
+		A3A7DAF876F6847C0F510835 /* ProgressTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTracker.swift; sourceTree = "<group>"; };
+		BA099ACA9E6A8FC2466F6BE8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0641199DF3FBF643342C45B0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7748CD0460DE0B13675FA0B6 /* ImageMint.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		23D6D57D1D602D7EE4B82983 /* ImageMint */ = {
+			isa = PBXGroup;
+			children = (
+				8E4377D2831971571EA98CCB /* BackupManager.swift */,
+				BA099ACA9E6A8FC2466F6BE8 /* ContentView.swift */,
+				4FB65997F339638C5D25154A /* DeviceManager.swift */,
+				25F980BC5F68937DDCF16D8F /* Helpers.swift */,
+				0CDC649C464BCDF0FBBA23C1 /* ImageMintApp.swift */,
+				A3A7DAF876F6847C0F510835 /* ProgressTracker.swift */,
+				501A7B22BBAFEFB043BB96D4 /* project.yml */,
+				89AE287D50CF79C5CB1FF299 /* RestoreManager.swift */,
+			);
+			name = ImageMint;
+			path = .;
+			sourceTree = "<group>";
+		};
+		990A27E0871C67EA07D063C7 = {
+			isa = PBXGroup;
+			children = (
+				23D6D57D1D602D7EE4B82983 /* ImageMint */,
+				0641199DF3FBF643342C45B0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7E945FE9EE5653FCEF1E170A /* ImageMint */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C35A0D468B74C6B18CBAB53E /* Build configuration list for PBXNativeTarget "ImageMint" */;
+			buildPhases = (
+				E11227D792B871BE9C530109 /* Sources */,
+				D7EC48BD6348EF4010E29331 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ImageMint;
+			packageProductDependencies = (
+			);
+			productName = ImageMint;
+			productReference = 7748CD0460DE0B13675FA0B6 /* ImageMint.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1C1B9727E114D43F48AFD6F8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1630;
+			};
+			buildConfigurationList = 7993F1848E92FB26F592AE41 /* Build configuration list for PBXProject "ImageMint" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 990A27E0871C67EA07D063C7;
+			minimizedProjectReferenceProxies = 1;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7E945FE9EE5653FCEF1E170A /* ImageMint */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D7EC48BD6348EF4010E29331 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15547210D4C1E02166697843 /* project.yml in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E11227D792B871BE9C530109 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD5803BF8F8E8B4645140A56 /* BackupManager.swift in Sources */,
+				F5614ED8795AE94CF8577BCB /* ContentView.swift in Sources */,
+				516AFAF227FD56BB97D14178 /* DeviceManager.swift in Sources */,
+				4F834211E19CCCE20E6BC6B5 /* Helpers.swift in Sources */,
+				C36A9C6C687DBDAE9E2B8404 /* ImageMintApp.swift in Sources */,
+				43B3574AFA564EF093C7FEF1 /* ProgressTracker.swift in Sources */,
+				6066A382795A1D675DD8460F /* RestoreManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		20CD7AF13D61E19E5FD19416 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.ImageMint;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		70BDC5C2700190AFCA4BED35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = ImageMint;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		8001DF21795AE93AE759FEB2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = ImageMint;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A6B7594B8557F5EA2AB96655 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.ImageMint;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7993F1848E92FB26F592AE41 /* Build configuration list for PBXProject "ImageMint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8001DF21795AE93AE759FEB2 /* Debug */,
+				70BDC5C2700190AFCA4BED35 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C35A0D468B74C6B18CBAB53E /* Build configuration list for PBXNativeTarget "ImageMint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6B7594B8557F5EA2AB96655 /* Debug */,
+				20CD7AF13D61E19E5FD19416 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1C1B9727E114D43F48AFD6F8 /* Project object */;
+}
