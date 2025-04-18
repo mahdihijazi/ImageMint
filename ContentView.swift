@@ -15,7 +15,13 @@ struct ContentView: View {
 
             List(selection: $selectedDevice) {
                 ForEach(deviceManager.devices) { device in
-                    Text(device.displayName)
+                    VStack(alignment: .leading) {
+                        Text(device.name)           
+                            .font(.headline)
+                        Text(String(format: "%.1f GB", Double(device.size)/1_000_000_000))
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
                 }
             }
             .frame(minHeight: 200)

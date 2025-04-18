@@ -22,10 +22,74 @@ class DeviceManager: ObservableObject {
     @Published var statusText: String = "Ready"
 
     func refreshDevices() {
-        // TODO: Use DiskArbitration or `diskutil list -plist` via Helpers.runShell
-        // Parse output and publish Device list
+        print("refreshDevices() called!")
+
+        devices = []
+
+        let process = Process()
+        process.executableURL = URL(fileURLWithPath: "/usr/sbin/diskutil")
+        process.arguments = ["list", "-plist"]
+
+        let pipe = Pipe()
+        process.standardOutput = pipe
+
+        do {
+            try process.run()
+            print("diskutil launched successfully")
+        } catch {
+            print("Failed to run diskutil: \(error)")
+            return
+        }
+
+        let data = pipe.fileHandleForReading.readDataToEndOfFile()
+        print("diskutil returned \(data.count) bytes")
+
+        guard let plist = try? PropertyListSerialization.propertyList(from: data, options: [], format: nil),
+              let dict = plist as? [String: Any],
+              let allDisks = dict["AllDisksAndPartitions"] as? [[String: Any]] else {
+            print("Failed to parse diskutil output")
+            return
+        }
+
+        var foundDevices: [Device] = []
+
+        for disk in allDisks {
+            // skip internal disks
+            let isInternal = (disk["OSInternal"] as? Bool) ?? true
+            if isInternal { continue }
+
+            // if there are partitions, only pick ones mounted under /Volumes/
+            if let partitions = disk["Partitions"] as? [[String: Any]] {
+                for partition in partitions {
+                    guard
+                      let mountPoint = partition["MountPoint"] as? String,
+                      mountPoint.hasPrefix("/Volumes/"),
+                      let identifier = partition["DeviceIdentifier"] as? String,
+                      let size = partition["Size"] as? Int64
+                    else { continue }
+
+                    let name = partition["VolumeName"] as? String ?? identifier
+                    foundDevices.append(
+                        Device(
+                          name: "\(name)",
+                          identifier: "/dev/rdisk\(identifier)",
+                          size: size
+                        )
+                    )
+                }
+            }
+            // (we skip disks with no mountable partitions)
+        }
+
+        print("Devices ready to display: \(foundDevices)")
+
+        DispatchQueue.main.async {
+            self.devices = foundDevices
+        }
     }
 
+
+    
     /// Handles file export (Backup) result from ContentView
     func handleBackup(device: Device?, result: Result<URL, Error>) {
         guard let device = device else {
