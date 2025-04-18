@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		15547210D4C1E02166697843 /* project.yml in Resources */ = {isa = PBXBuildFile; fileRef = 501A7B22BBAFEFB043BB96D4 /* project.yml */; };
 		43B3574AFA564EF093C7FEF1 /* ProgressTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A7DAF876F6847C0F510835 /* ProgressTracker.swift */; };
-		4F834211E19CCCE20E6BC6B5 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F980BC5F68937DDCF16D8F /* Helpers.swift */; };
+		4F834211E19CCCE20E6BC6B5 /* ShellRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F980BC5F68937DDCF16D8F /* ShellRunner.swift */; };
 		516AFAF227FD56BB97D14178 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB65997F339638C5D25154A /* DeviceManager.swift */; };
 		6066A382795A1D675DD8460F /* RestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AE287D50CF79C5CB1FF299 /* RestoreManager.swift */; };
 		C36A9C6C687DBDAE9E2B8404 /* ImageMintApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDC649C464BCDF0FBBA23C1 /* ImageMintApp.swift */; };
@@ -19,7 +19,7 @@
 
 /* Begin PBXFileReference section */
 		0CDC649C464BCDF0FBBA23C1 /* ImageMintApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMintApp.swift; sourceTree = "<group>"; };
-		25F980BC5F68937DDCF16D8F /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		25F980BC5F68937DDCF16D8F /* ShellRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellRunner.swift; sourceTree = "<group>"; };
 		4FB65997F339638C5D25154A /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		501A7B22BBAFEFB043BB96D4 /* project.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = project.yml; sourceTree = "<group>"; };
 		7748CD0460DE0B13675FA0B6 /* ImageMint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageMint.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,7 +44,7 @@
 				8E4377D2831971571EA98CCB /* BackupManager.swift */,
 				BA099ACA9E6A8FC2466F6BE8 /* ContentView.swift */,
 				4FB65997F339638C5D25154A /* DeviceManager.swift */,
-				25F980BC5F68937DDCF16D8F /* Helpers.swift */,
+				25F980BC5F68937DDCF16D8F /* ShellRunner.swift */,
 				0CDC649C464BCDF0FBBA23C1 /* ImageMintApp.swift */,
 				A3A7DAF876F6847C0F510835 /* ProgressTracker.swift */,
 				501A7B22BBAFEFB043BB96D4 /* project.yml */,
@@ -129,7 +129,7 @@
 				CD5803BF8F8E8B4645140A56 /* BackupManager.swift in Sources */,
 				F5614ED8795AE94CF8577BCB /* ContentView.swift in Sources */,
 				516AFAF227FD56BB97D14178 /* DeviceManager.swift in Sources */,
-				4F834211E19CCCE20E6BC6B5 /* Helpers.swift in Sources */,
+				4F834211E19CCCE20E6BC6B5 /* ShellRunner.swift in Sources */,
 				C36A9C6C687DBDAE9E2B8404 /* ImageMintApp.swift in Sources */,
 				43B3574AFA564EF093C7FEF1 /* ProgressTracker.swift in Sources */,
 				6066A382795A1D675DD8460F /* RestoreManager.swift in Sources */,
