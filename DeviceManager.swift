@@ -1,14 +1,14 @@
 // DeviceManager.swift
-// Discover devices and handle backup/restore requests
+// Discover removable disks and handle backup/restore requests
 
 import Foundation
 import Combine
 
 struct Device: Identifiable, Hashable {
     let id = UUID()
-    let name: String
-    let identifier: String
-    let size: Int64
+    let name: String           // Friendly name (MediaName or BSD id)
+    let identifier: String     // Raw device path, e.g. /dev/rdisk4
+    let size: Int64            // Total size in bytes
 
     var displayName: String {
         let gb = Double(size) / 1_000_000_000
@@ -21,76 +21,97 @@ class DeviceManager: ObservableObject {
     @Published var progress: Double = 0.0
     @Published var statusText: String = "Ready"
 
+    /// Refresh the list of removable devices
     func refreshDevices() {
-        print("refreshDevices() called!")
-
         devices = []
 
-        let process = Process()
-        process.executableURL = URL(fileURLWithPath: "/usr/sbin/diskutil")
-        process.arguments = ["list", "-plist"]
-
-        let pipe = Pipe()
-        process.standardOutput = pipe
+        // 1. List all disks
+        let list = Process()
+        list.executableURL = URL(fileURLWithPath: "/usr/sbin/diskutil")
+        list.arguments = ["list", "-plist"]
+        let listPipe = Pipe()
+        list.standardOutput = listPipe
 
         do {
-            try process.run()
-            print("diskutil launched successfully")
+            try list.run()
         } catch {
-            print("Failed to run diskutil: \(error)")
+            print("❌ diskutil list failed:", error)
             return
         }
 
-        let data = pipe.fileHandleForReading.readDataToEndOfFile()
-        print("diskutil returned \(data.count) bytes")
-
-        guard let plist = try? PropertyListSerialization.propertyList(from: data, options: [], format: nil),
-              let dict = plist as? [String: Any],
-              let allDisks = dict["AllDisksAndPartitions"] as? [[String: Any]] else {
-            print("Failed to parse diskutil output")
+        let raw = listPipe.fileHandleForReading.readDataToEndOfFile()
+        guard
+            let plist = try? PropertyListSerialization.propertyList(from: raw, options: [], format: nil),
+            let dict = plist as? [String:Any],
+            let allDisks = dict["AllDisksAndPartitions"] as? [[String:Any]]
+        else {
+            print("❌ could not parse diskutil list output")
             return
         }
 
-        var foundDevices: [Device] = []
+        var found: [Device] = []
 
         for disk in allDisks {
-            // skip internal disks
-            let isInternal = (disk["OSInternal"] as? Bool) ?? true
-            if isInternal { continue }
+            // 2. Extract the parent disk ID & size
+            guard
+                let id   = disk["DeviceIdentifier"] as? String,
+                let size = disk["Size"] as? Int64
+            else { continue }
 
-            // if there are partitions, only pick ones mounted under /Volumes/
-            if let partitions = disk["Partitions"] as? [[String: Any]] {
-                for partition in partitions {
-                    guard
-                      let mountPoint = partition["MountPoint"] as? String,
-                      mountPoint.hasPrefix("/Volumes/"),
-                      let identifier = partition["DeviceIdentifier"] as? String,
-                      let size = partition["Size"] as? Int64
-                    else { continue }
+            let diskNode = "/dev/\(id)"   // for info
+            let rawNode  = "/dev/r\(id)"  // for dd
 
-                    let name = partition["VolumeName"] as? String ?? identifier
-                    foundDevices.append(
-                        Device(
-                          name: "\(name)",
-                          identifier: "/dev/rdisk\(identifier)",
-                          size: size
-                        )
-                    )
-                }
+            // 3. Only include removable media
+            guard
+                let info      = Self.fetchDiskInfo(for: diskNode),
+                let removable = info["RemovableMedia"] as? Bool,
+                removable == true
+            else {
+                continue
             }
-            // (we skip disks with no mountable partitions)
+
+            // 4. Use a friendly MediaName if available
+            let friendly = info["MediaName"] as? String
+            let displayName = friendly ?? id
+
+            found.append(
+                Device(name: displayName,
+                       identifier: rawNode,
+                       size: size)
+            )
         }
 
-        print("Devices ready to display: \(foundDevices)")
-
         DispatchQueue.main.async {
-            self.devices = foundDevices
+            self.devices = found
         }
     }
 
+    /// Run `diskutil info -plist /dev/diskX` and return the info dictionary
+    private static func fetchDiskInfo(for diskNode: String) -> [String:Any]? {
+        let info = Process()
+        info.executableURL = URL(fileURLWithPath: "/usr/sbin/diskutil")
+        info.arguments = ["info", "-plist", diskNode]
+        let pipe = Pipe()
+        info.standardOutput = pipe
 
-    
-    /// Handles file export (Backup) result from ContentView
+        do {
+            try info.run()
+        } catch {
+            return nil
+        }
+
+        let data = pipe.fileHandleForReading.readDataToEndOfFile()
+        guard
+            let plist = try? PropertyListSerialization.propertyList(from: data, options: [], format: nil),
+            let dict = plist as? [String:Any]
+        else {
+            return nil
+        }
+        return dict
+    }
+
+    // MARK: – Backup / Restore Handlers
+
     func handleBackup(device: Device?, result: Result<URL, Error>) {
         guard let device = device else {
             statusText = "No device selected"
@@ -98,15 +119,17 @@ class DeviceManager: ObservableObject {
         }
         switch result {
         case .success(let url):
-            BackupManager.backup(device: device, to: url,
-                                 progress: updateProgress,
-                                 completion: finishHandler)
+            BackupManager.backup(
+                device: device,
+                to: url,
+                progress: updateProgress,
+                completion: finishHandler
+            )
         case .failure(let error):
             statusText = "Backup cancelled: \(error.localizedDescription)"
         }
     }
 
-    /// Handles file import (Restore) result from ContentView
     func handleRestore(device: Device?, result: Result<URL, Error>) {
         guard let device = device else {
             statusText = "No device selected"
@@ -114,13 +137,18 @@ class DeviceManager: ObservableObject {
         }
         switch result {
         case .success(let url):
-            RestoreManager.restore(image: url, to: device,
-                                   progress: updateProgress,
-                                   completion: finishHandler)
+            RestoreManager.restore(
+                image: url,
+                to: device,
+                progress: updateProgress,
+                completion: finishHandler
+            )
         case .failure(let error):
             statusText = "Restore cancelled: \(error.localizedDescription)"
         }
     }
+
+    // MARK: – Progress Updates
 
     private func updateProgress(_ fraction: Double, status: String) {
         DispatchQueue.main.async {
